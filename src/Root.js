@@ -6,6 +6,7 @@ import { loadCategories, loadCurrentUser } from "./actions/index";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Admin from "./components/Admin/Admin";
 import User from "./components/User/User";
+import Supplier from "./components/Supplier/Supplier";
 import Home from "./components/Home/Home";
 import SubCategoryBrowse from "./components/Home/SubCategoryBrowse/SubCategoryBrowse";
 import Blog from "./components/Blog/Blog";
@@ -84,6 +85,8 @@ class Root extends Component {
           <Route path="/browse/:id" component={SubCategoryBrowse} />
           <Route path="/admin" component={Admin} />
           <Route path="/user" component={User} />
+          <Route path="/supplier" component={Supplier} />
+
           <Route path="/register/verify/:token" component={Register} />
           <Route path={"/blog"} component={Blog} />
           <Route path={"/about"} component={About} />
