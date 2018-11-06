@@ -1,0 +1,42 @@
+p {
+    color: #555555;
+}
+
+.logobar {
+    margin: 0px;
+}
+
+.jumbotron {
+    height: 100px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.pad {
+    padding: 5px;
+}
+
+footer {
+    background: #f0f0f0;
+    padding: 50px;
+}
+
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: saddlebrown;
+}
+
+#box {
+    padding: 20px;
+    margin: 20px;
+}

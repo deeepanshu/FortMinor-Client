@@ -1,0 +1,22 @@
+/* img {
+  width: 30%;
+  float: left;
+  margin: 1.66%;
+}
+.random {
+  width: 30%;
+  padding-bottom: 10px;
+  border-bottom: 3px solid grey;
+  font-size: 2em;
+  font-family: "Encode Sans Expanded", sans-serif;
+  margin-left: 1.66%;
+} */
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}

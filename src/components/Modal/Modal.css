@@ -1,0 +1,70 @@
+p {
+    color: #555555;
+}
+
+.logobar {
+    margin: 0px;
+}
+
+.jumbotron {
+    height: 100px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.pad {
+    padding: 5px;
+}
+
+footer {
+    background: #f0f0f0;
+    padding: 50px;
+}
+
+.row1 {
+    margin-bottom: 40px;
+}
+
+.row2 {
+    margin-bottom: 20px;
+}
+
+.row3 {
+    margin: 20px;
+    padding: 20px;
+}
+
+.row4 {
+    padding: 0;
+    margin: 0;
+}
+
+.row5 {
+    padding: 40px;
+    margin: 20px;
+}
+
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.vl {
+    border-left: 2px solid grey;
+    height: 80px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: saddlebrown;
+}
+
+#modal {
+    padding: 10px;
+    margin: 10px;
+}
