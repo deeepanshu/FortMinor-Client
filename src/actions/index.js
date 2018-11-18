@@ -1,7 +1,7 @@
 import axios from "axios";
 export const loadCategories = () => {
   return dispatch => {
-    return axios.get("http://localhost:5000/api/populate/1").then(response => {
+    return axios.get("/api/populate/1").then(response => {
       console.log(response.data);
       dispatch(getAllCategories(response.data));
     });
@@ -15,7 +15,7 @@ export const getAllCategories = categories => ({
 export const addCategory = category => {
   return dispatch => {
     return axios
-      .post("http://localhost:5000/api/add/category", category)
+      .post("/api/add/category", category)
       .then(res => {
         console.log(res.data);
         dispatch(loadCategories());
@@ -28,12 +28,10 @@ export const addCategory = category => {
 
 export const loadSubCategories = id => {
   return dispatch => {
-    return axios
-      .get(`http://localhost:5000/api/populate/category/${id}`)
-      .then(response => {
-        console.log(response.data);
-        dispatch(getCategory(response.data));
-      });
+    return axios.get(`/api/populate/category/${id}`).then(response => {
+      console.log(response.data);
+      dispatch(getCategory(response.data));
+    });
   };
 };
 
@@ -45,7 +43,7 @@ export const getCategory = category => ({
 export const addSubCategory = subcategory => {
   return dispatch => {
     return axios
-      .post("http://localhost:5000/api/add/subcategory", subcategory)
+      .post("/api/add/subcategory", subcategory)
       .then(res => {
         console.log(res.data);
         dispatch(loadSubCategories(subcategory.categoryID));
@@ -58,12 +56,10 @@ export const addSubCategory = subcategory => {
 
 export const loadProducts = id => {
   return dispatch => {
-    return axios
-      .get(`http://localhost:5000/api/populate/subcategory/${id}`)
-      .then(response => {
-        console.log(response.data);
-        dispatch(getProducts(response.data));
-      });
+    return axios.get(`/api/populate/subcategory/${id}`).then(response => {
+      console.log(response.data);
+      dispatch(getProducts(response.data));
+    });
   };
 };
 
@@ -75,7 +71,7 @@ export const getProducts = subcategory => ({
 export const addProduct = product => {
   return dispatch => {
     return axios
-      .post("http://localhost:5000/api/add/product", product)
+      .post("/api/add/product", product)
       .then(res => {
         console.log(res.data);
         dispatch(loadProducts(product.subCategoryID));
