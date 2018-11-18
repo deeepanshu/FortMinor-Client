@@ -108,3 +108,20 @@ export const getCurrentUser = user => ({
   type: "GET_CURRENT_USER",
   user
 });
+export const changePlacedFlag = data => ({
+  type: "CHANGE_PLACED_FLAG",
+  data
+});
+export const requestToOrder = productId => {
+  return dispatch => {
+    return axios
+      .post("/api/add/request", productId)
+      .then(res => {
+        console.log(res.data);
+        dispatch(changePlacedFlag(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};

@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import FileBase64 from "react-file-base64";
 class AddProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.additionalInfoAdd = this.additionalInfoAdd.bind(this);
+  }
   getFiles(files) {
     this.setState({ files: files });
     this.props.getImageBase64(files[0] ? files[0].base64 : "");
+  }
+  additionalInfoAdd(e) {
+    e.preventDefault();
+    if (this.refs.field.value && this.refs.value.value) {
+      this.props.additionalInfoAdd(
+        this.refs.field.value,
+        this.refs.value.value
+      );
+    }
   }
   render() {
     return (
@@ -35,6 +48,8 @@ class AddProduct extends Component {
           {this.props.base64 && <img src={this.props.base64} alt={"Product"} />}
           <br />
           <br />
+          <AdditionalInfo rows={this.props.additional} />
+          <br />
           <button onClick={this.props.toggleAddMoreHandler}>
             Add More Information
           </button>
@@ -48,6 +63,7 @@ class AddProduct extends Component {
                     id="field"
                     name="field"
                     type="text"
+                    ref={"field"}
                   />
                 </div>
               </div>
@@ -59,10 +75,11 @@ class AddProduct extends Component {
                     id="value"
                     name="value"
                     type="text"
+                    ref={"value"}
                   />
                 </div>
               </div>
-              <button>Add</button>
+              <button onClick={this.additionalInfoAdd}>Add</button>
             </div>
           )}
           <br />
@@ -79,5 +96,22 @@ class AddProduct extends Component {
     );
   }
 }
-
+const AdditionalInfo = props => {
+  return (
+    <div>
+      {props.rows && (
+        <table>
+          {props.rows.map((row, i) => {
+            return (
+              <tr>
+                <td>{row.key}:</td>
+                <td>{row.val}</td>
+              </tr>
+            );
+          })}
+        </table>
+      )}
+    </div>
+  );
+};
 export default AddProduct;

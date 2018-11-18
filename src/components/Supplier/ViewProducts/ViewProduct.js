@@ -1,34 +1,17 @@
-import React from "react";
-import { loadProduct, requestToOrder } from "../../../actions";
+import React, { Component } from "react";
+import { loadProduct } from "../../../actions";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
-class ViewProduct extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      placed: false
-    };
-    this.placeRequest = this.placeRequest.bind(this);
-  }
-
+class ViewProduct extends Component {
   componentDidMount() {
     console.log(this.props.match);
-    this.props.loadProductDispatch(this.props.match.params.id3);
+    this.props.loadProductDispatch(this.props.match.params.id2);
   }
-  componentWillReceiveProps(newProps) {
-    if (newProps.loading !== this.state.loading) {
-      this.setState({ loading: newProps.loading });
-    }
-  }
-  placeRequest() {
-    this.setState({ placed: false });
-    this.props.requestToOrderDispatch(this.props.match.params.id3);
-  }
+
   render() {
     let html = <h3>No Information available.</h3>;
     let additional = <br />;
+
     if (this.props.product) {
       if (this.props.product.attributes) {
         let list = this.props.product.attributes.map((attr, i) => {
@@ -64,31 +47,31 @@ class ViewProduct extends React.Component {
               <h5>Product Description: {this.props.product.description}</h5>
               <hr />
               {additional}
-              <button className="btn btn-default" onClick={this.placeRequest}>
-                Place Request
-              </button>
             </div>
           </div>
         </div>
       );
     }
-    return <div>{html}</div>;
+    return (
+      <div>
+        {html}
+        <br />
+      </div>
+    );
   }
 }
+
 function mapStateToProps(state) {
   console.log(state);
   return {
     product: state.categoryReducer.product,
-    loading: state.categoryReducer.loading,
-    request: state.categoryReducer.request,
-    placed: state.categoryReducer.placed
+    loading: state.categoryReducer.loading
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadProductDispatch: id => dispatch(loadProduct(id)),
-    requestToOrderDispatch: productId => dispatch(requestToOrder(productId))
+    loadProductDispatch: id => dispatch(loadProduct(id))
   };
 }
 

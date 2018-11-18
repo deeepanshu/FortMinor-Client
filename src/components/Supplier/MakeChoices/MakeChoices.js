@@ -61,7 +61,9 @@ class MakeChoices extends React.Component {
             categories: this.state.selections
           })
           .then(res => {
+            console.log("adafafas");
             this.setState({ loading: false });
+            this.props.history.push("/supplier");
           })
           .catch(err => console.log(err));
       }

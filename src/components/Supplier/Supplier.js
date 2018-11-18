@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import MakeChoices from "./MakeChoices/MakeChoices";
 import Spinner from "../Spinner/Spinner";
 import axios from "axios";
-//import axios from "axios";
+import ViewProducts from "./ViewProducts/ViewProducts";
 
 class Supplier extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class Supplier extends React.Component {
   }
   componentDidMount() {
     axios.get("/api/list/supplier/dealsIn").then(res => {
+      console.log(res.data);
       if (res.data.err === 1) {
         alert("Log in to access the supplier panel.");
         this.props.history.push("/");
@@ -31,16 +32,27 @@ class Supplier extends React.Component {
     });
   }
   render() {
-    let toShow = <Spinner />;
-    if (this.state.showForm) {
-      toShow = <MakeChoices />;
-    } else if (!this.state.showForm && this.state.subcategories) {
-      toShow = <SupplierDashboard subcategories={this.state.subcategories} />;
-    }
     return (
       <div>
         <Sidebar links={supplierLinks} />
-        {toShow}
+
+        <Switch>
+          <Route
+            path={"/supplier/subcategory"}
+            exact
+            render={props => (
+              <SupplierDashboard
+                {...props}
+                showForm={this.state.showForm}
+                subcategories={this.state.subcategories}
+              />
+            )}
+          />
+          <Route
+            path={"/supplier/subcategory/:id"}
+            render={props => <ViewProducts />}
+          />
+        </Switch>
       </div>
     );
   }
@@ -49,19 +61,28 @@ export default Supplier;
 const supplierLinks = [
   { link: "/", heading: "Home" },
   { link: "/supplier/", heading: "Supplier Home" },
+  { link: "/supplier/subcategory", heading: "Deals In" },
   { link: "/supplier/requests", heading: "View Requests" }
 ];
-// <Switch>
-//   <Route exact path="/supplier" component={SupplierDashboard} />
-// </Switch>
-const SupplierDashboard = props => (
-  <div className="container">
-    <h3>SubCategories</h3>
-    <hr />
-    <br />
-    <SubCategoryTable subcategories={props.subcategories} />
-  </div>
-);
+
+const SupplierDashboard = props => {
+  console.log(props);
+  let toShow = <Spinner />;
+  if (props.showForm) {
+    toShow = <MakeChoices />;
+  } else if (!props.showForm && props.subcategories) {
+    toShow = (
+      <div>
+        <h3>SubCategories</h3>
+        <hr />
+        <br />
+        <SubCategoryTable subcategories={props.subcategories} />;
+      </div>
+    );
+  }
+  return <div className="container">{toShow}</div>;
+};
+
 const SubCategoryTable = props => {
   if (props.subcategories)
     return (
@@ -95,7 +116,7 @@ const SubCategoryRows = props => {
         <td>{subcategory.name}</td>
         <td>
           <Link
-            to={`/admin/category/${props.categoryID}/${subcategory._id}`}
+            to={`/supplier/subcategory/${subcategory._id}`}
             className="btn btn-primary"
           >
             View Products
