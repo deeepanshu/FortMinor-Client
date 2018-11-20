@@ -16,6 +16,11 @@ import Contact from "./components/Contact/Contact";
 import axios from "axios";
 import Register from "./components/Register/Register";
 class Root extends Component {
+  constructor(props) {
+    super(props);
+    this.logoutHandler = this.logoutHandler.bind(this);
+  }
+
   componentDidMount() {
     this.props.loadCurrentUserDispatch();
   }
@@ -72,13 +77,20 @@ class Root extends Component {
       });
   };
 
+  logoutHandler() {
+    axios.get("/auth/logout").then(res => {
+      this.props.loadCurrentUserDispatch();
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Header
           signup={this.signUp}
-          currentUser={this.props.user && {}}
+          user={this.props.user}
           signIn={this.signIn}
+          logoutHandler={this.logoutHandler}
         />
         <Switch>
           <Route exact path="/" component={Home} />

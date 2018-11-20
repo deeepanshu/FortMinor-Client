@@ -5,7 +5,7 @@ import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import Carousel from "../Carousel/Carousel";
-
+import axios from "axios";
 class Home extends React.Component {
   constructor(props) {
     super(props);

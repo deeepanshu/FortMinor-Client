@@ -25,6 +25,9 @@ class ViewProduct extends React.Component {
   placeRequest() {
     this.setState({ placed: false });
     this.props.requestToOrderDispatch(this.props.match.params.id3);
+    alert(
+      "Request has been made! Please check email for further notifications."
+    );
   }
   render() {
     let html = <h3>No Information available.</h3>;
