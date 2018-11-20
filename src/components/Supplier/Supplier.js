@@ -6,6 +6,7 @@ import MakeChoices from "./MakeChoices/MakeChoices";
 import Spinner from "../Spinner/Spinner";
 import axios from "axios";
 import ViewProducts from "./ViewProducts/ViewProducts";
+import ViewRequests from "./ViewRequests/ViewRequests";
 
 class Supplier extends React.Component {
   constructor(props) {
@@ -51,6 +52,10 @@ class Supplier extends React.Component {
           <Route
             path={"/supplier/subcategory/:id"}
             render={props => <ViewProducts />}
+          />
+          <Route
+            path={"/supplier/requests"}
+            render={props => <ViewRequests />}
           />
         </Switch>
       </div>

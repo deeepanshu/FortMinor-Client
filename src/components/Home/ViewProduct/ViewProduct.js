@@ -37,14 +37,21 @@ class ViewProduct extends React.Component {
         let list = this.props.product.attributes.map((attr, i) => {
           return (
             <tr>
-              <td>{attr.key}:</td>
+              <td>
+                <b>
+                  {attr.key}
+                  :&nbsp;
+                </b>
+              </td>
               <td>{attr.val}</td>
             </tr>
           );
         });
         additional = (
           <div>
-            Additional Information
+            <h5>
+              <b>Additional Information</b>
+            </h5>
             {list}
             <hr />
           </div>
@@ -52,6 +59,7 @@ class ViewProduct extends React.Component {
       }
       html = (
         <div className={"container"}>
+          <br />
           <div className={"row"}>
             <div className={"col"}>
               <img
@@ -59,10 +67,10 @@ class ViewProduct extends React.Component {
                 alt={"Product"}
                 width={"250px"}
                 height={"300px"}
-                align="left"
+                align="right"
               />
             </div>
-            <div className={"col"} align="left">
+            <div className={"col"}>
               <h3>Product Name: {this.props.product.name}</h3>
               <h5>Product Description: {this.props.product.description}</h5>
               <hr />
@@ -72,6 +80,7 @@ class ViewProduct extends React.Component {
               </button>
             </div>
           </div>
+          <br />
         </div>
       );
     }

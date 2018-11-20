@@ -115,7 +115,7 @@ export const changePlacedFlag = data => ({
 export const requestToOrder = productId => {
   return dispatch => {
     return axios
-      .post("/api/add/request", productId)
+      .post("/api/add/request", { productId })
       .then(res => {
         console.log(res.data);
         dispatch(changePlacedFlag(res.data));
@@ -125,3 +125,29 @@ export const requestToOrder = productId => {
       });
   };
 };
+
+export const loadRequestsForCurrentSupplier = () => {
+  return dispatch => {
+    return axios.get(`/api/view/request/supplier`).then(response => {
+      console.log(response.data);
+      dispatch(getRequestsForCurrentSupplier(response.data));
+    });
+  };
+};
+export const getRequestsForCurrentSupplier = requests => ({
+  type: "GET_REQUESTS_FOR_CURR_SUPPLIER",
+  requests
+});
+
+export const loadRequestForCustomer = () => {
+  return dispatch => {
+    return axios.get(`/api/view/request/user/`).then(response => {
+      console.log(response.data);
+      dispatch(getRequestForCustomer(response.data));
+    });
+  };
+};
+export const getRequestForCustomer = requests => ({
+  type: "GET_REQUESTS_FOR_CUSTOMER",
+  requests
+});

@@ -53,7 +53,7 @@ class MakeChoices extends React.Component {
           this.state.selections.length} choices to continue.`
       );
     } else {
-      let decision = window.confirm("haha");
+      let decision = window.confirm("Are you sure to go with these choices?");
       this.setState({ loading: true });
       if (decision) {
         axios

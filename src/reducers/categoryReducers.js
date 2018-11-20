@@ -34,6 +34,14 @@ const categoryReducer = (state = {}, action) => {
         placed: true,
         request: action.data
       };
+    case "GET_REQUESTS_FOR_CURR_SUPPLIER":
+      return {
+        requests: action.requests
+      };
+    case "GET_REQUESTS_FOR_CUSTOMER":
+      return {
+        requests: action.requests
+      };
     default:
       // need this for default case
       return state;

@@ -4,6 +4,9 @@ import store from "./store/store";
 import Root from "./Root";
 
 class App extends Component {
+  componentDidMount() {
+    document.title = "Make Me Builder";
+  }
   render() {
     return (
       <Provider store={store}>

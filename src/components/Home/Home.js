@@ -5,7 +5,7 @@ import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import Carousel from "../Carousel/Carousel";
-import axios from "axios";
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -54,13 +54,16 @@ class Home extends React.Component {
 }
 const carousel = [
   {
-    carouselLink: "https://via.placeholder.com/1400x600"
+    carouselLink:
+      "https://www.construct-ed.com/wp-content/uploads/2017/07/construction-jobs-list-hero-img01.png"
   },
   {
-    carouselLink: "https://via.placeholder.com/1400x600"
+    carouselLink:
+      "http://deltraconstruction.com/wp-content/uploads/2018/04/sli1.jpg"
   },
   {
-    carouselLink: "https://via.placeholder.com/1400x600"
+    carouselLink:
+      "http://www.bgconstructiontexas.com/img/services/construction-process-sm.v1.jpg"
   }
 ];
 function mapStateToProps(state) {

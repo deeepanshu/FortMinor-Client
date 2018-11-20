@@ -1,9 +1,12 @@
-.flexer{
-    display: flex;
-    flex-wrap: wrap;
+.flexer {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.card{
-    padding: 10px;
-    border: none;
+.card {
+  padding: 10px;
+  border: none;
+}
+.container {
+  max-width: 1200px;
 }
