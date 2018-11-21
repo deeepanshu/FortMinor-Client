@@ -1,5 +1,9 @@
 import React from "react";
-import { loadRequestsForCurrentSupplier } from "../../../actions";
+import {
+  loadRequestsForCurrentSupplier,
+  acceptRequestForSupplier,
+  rejectRequestForSupplier
+} from "../../../actions";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 class ViewRequests extends React.Component {
@@ -11,7 +15,11 @@ class ViewRequests extends React.Component {
       <div className="container">
         <h2>Orders made on your products:</h2>
         <hr />
-        <RequestListGroups requests={this.props.requests} />
+        <RequestListGroups
+          requests={this.props.requests}
+          acceptRequest={this.props.acceptRequestForSupplierDispatch}
+          rejectRequest={this.props.rejectRequestForSupplierDispatch}
+        />
         <br />
       </div>
     );
@@ -21,7 +29,11 @@ class ViewRequests extends React.Component {
 const RequestListGroups = props => {
   return (
     <ul class="list-group">
-      <RequestList requests={props.requests} />
+      <RequestList
+        requests={props.requests}
+        acceptRequest={props.acceptRequest}
+        rejectRequest={props.rejectRequest}
+      />
     </ul>
   );
 };
@@ -42,9 +54,23 @@ const RequestList = props => {
         <span style={{ float: "right" }}>
           {request.status === 0 ? (
             <div>
-              <button className="btn btn-success">Confirm</button>
+              <button
+                className="btn btn-success"
+                onClick={() => {
+                  props.acceptRequest(request._id);
+                }}
+              >
+                Confirm
+              </button>
               &nbsp;&nbsp;
-              <button className="btn btn-danger">Cancel</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  props.rejectRequest(request._id);
+                }}
+              >
+                Cancel
+              </button>
             </div>
           ) : request.status === 1 ? (
             <p style={{ "background-color": "#25ac00" }}>
@@ -72,7 +98,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadRequestsForCurrentSupplierDispatch: () =>
-      dispatch(loadRequestsForCurrentSupplier())
+      dispatch(loadRequestsForCurrentSupplier()),
+    acceptRequestForSupplierDispatch: id =>
+      dispatch(acceptRequestForSupplier(id)),
+    rejectRequestForSupplierDispatch: id =>
+      dispatch(rejectRequestForSupplier(id))
   };
 }
 

@@ -96,9 +96,11 @@ class Root extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/browse/:id" component={SubCategoryBrowse} />
           <Route path="/admin" component={Admin} />
-          <Route path="/user" component={User} />
+          <Route
+            path="/user"
+            render={props => <User {...props} user={this.props.user} />}
+          />
           <Route path="/supplier" component={Supplier} />
-
           <Route path="/register/verify/:token" component={Register} />
           <Route path={"/blog"} component={Blog} />
           <Route path={"/about"} component={About} />

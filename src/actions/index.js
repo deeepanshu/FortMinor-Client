@@ -151,3 +151,24 @@ export const getRequestForCustomer = requests => ({
   type: "GET_REQUESTS_FOR_CUSTOMER",
   requests
 });
+
+export const acceptRequestForSupplier = id => {
+  return dispatch => {
+    return axios
+      .get(`/api/switch/request/status/accept/${id}`)
+      .then(response => {
+        console.log(response.data);
+        dispatch(loadRequestsForCurrentSupplier(response.data));
+      });
+  };
+};
+export const rejectRequestForSupplier = id => {
+  return dispatch => {
+    return axios
+      .get(`/api/switch/request/status/reject/${id}`)
+      .then(response => {
+        console.log(response.data);
+        dispatch(loadRequestsForCurrentSupplier(response.data));
+      });
+  };
+};

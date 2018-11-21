@@ -21,9 +21,9 @@ const Header = props => {
             <div className="col-sm">
               <div className="">
                 {props.user ? (
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <button
-                      class="btn btn-light dropdown-toggle"
+                      className="btn btn-light dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -33,25 +33,25 @@ const Header = props => {
                       Profile
                     </button>
                     <div
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <Link class="dropdown-item" to="/user">
+                      <Link className="dropdown-item" to="/user">
                         View Profile
                       </Link>
                       {props.user.isSupplier && (
-                        <Link class="dropdown-item" to="/supplier">
+                        <Link className="dropdown-item" to="/supplier">
                           Supplier
                         </Link>
                       )}
                       {props.user.isAdmin && (
-                        <Link class="dropdown-item" to="/admin">
+                        <Link className="dropdown-item" to="/admin">
                           Admin
                         </Link>
                       )}
 
                       <button
-                        className="btn btn-link"
+                        className="dropdown-item"
                         onClick={props.logoutHandler}
                       >
                         Logout

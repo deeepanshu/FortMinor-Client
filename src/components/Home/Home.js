@@ -40,10 +40,41 @@ class Home extends React.Component {
                 <br />
                 <br />
                 <br />
-                <h3 className={"text-center"}>What We Provide</h3>
+                <h3 className={"text-center"}>
+                  <b>What We Provide</b>
+                </h3>
                 <br />
                 <br />
                 <CategoryPanel {...props} categories={this.props.categories} />
+                <div align="center" style={{}}>
+                  <h3 className={"text-center"}>
+                    <b>Design Your Own Idea</b>
+                  </h3>
+                  <a href="http://localhost:3001" target="_blank">
+                    <img
+                      width="30%"
+                      alt="Design Your Idea"
+                      src="https://d1cfnnhb7hbym9.cloudfront.net/dist/images/home/turntables/slider_rendu_2-turntable_djdfbg_c_scale,w_1024.0eea8c565fcd7b184da9685d1d7985fb.jpg"
+                    />
+                  </a>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div align="center">
+                  <h3 className={"text-center"}>
+                    <b>Chat With Us</b>
+                  </h3>
+                  <a href="https://mmb-bot-chat.herokuapp.com/" target="_blank">
+                    <img
+                      width="30%"
+                      src="https://cdn-images-1.medium.com/max/1279/1*0IpquI0xSAap0jeUItwaVg.png"
+                      alt="Chat with us"
+                    />
+                  </a>
+                </div>
+                <br />
+                <br />
               </div>
             )}
           />

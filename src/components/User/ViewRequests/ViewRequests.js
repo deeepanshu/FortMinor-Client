@@ -35,9 +35,13 @@ const RequestList = props => {
             <p style={{ "background-color": "#fbd600" }}>
               <b>&nbsp;Pending&nbsp;</b>
             </p>
+          ) : request.status === 1 ? (
+            <p style={{ "background-color": "#25ac00" }}>
+              <b>&nbsp;Success&nbsp;</b>
+            </p>
           ) : (
-            <p style={{ "background-color": "#20f200" }}>
-              <b>&nbsp;In Process&nbsp;</b>
+            <p style={{ "background-color": "#ff000c" }}>
+              <b>&nbsp;Cancelled&nbsp;</b>
             </p>
           )}
         </span>
